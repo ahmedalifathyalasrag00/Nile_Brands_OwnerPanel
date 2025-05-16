@@ -1,0 +1,35 @@
+<div class="flex flex-wrap justify-center items-center gap-8 mt-[55px] px-4 md:px-0">
+    <div class="relative w-full max-w-[480px] md:w-auto">
+        <img class="w-full max-w-[480px]" src="images/authnilebrand.png" alt="Brand graphic" />
+        <img class="absolute w-[120px] inset-0 top-[40%] mx-auto" src="images/nile brand.png" alt="Logo" />
+    </div>
+
+    <div class="w-full h-[600px] max-w-[375px] p-6">
+        <h2 class="text-[28px] md:text-[35px] font-[700] text-fontColor text-center">
+            Verification
+        </h2>
+        <p class="mt-2 text-[20px] text-center text-secondary">
+            Please enter the code we just sent to your email
+        </p>
+
+        <form class="mt-12" [formGroup]="form" (ngSubmit)="onVerify()">
+            <div class="flex justify-center gap-2 mt-6">
+                <input *ngFor="let ctrl of controls; let i = index" #codeInput type="text" maxlength="1"
+                    [formControlName]="ctrl" (input)="autoFocus(i)"
+                    class="w-[44px] h-[44px] text-[20px] text-center border-2 border-gray-300 rounded-md focus:border-primary focus:outline-none" />
+            </div>
+
+            <p class="text-center text-[18px] text-fontColor mt-4">{{ timerDisplay }}</p>
+
+            <div *ngIf="errorMessage" class="text-red-500 text-sm text-center mt-2">
+                {{ errorMessage }}
+            </div>
+
+            <button type="submit" [disabled]="form.invalid || timeLeft <= 0"
+                class="w-full mt-12 px-6 py-2 text-[16px] md:text-[20px] text-white bg-primary rounded-full disabled:opacity-50 disabled:cursor-not-allowed">
+                Verify
+            </button>
+        </form>
+    </div>
+</div>
+  
