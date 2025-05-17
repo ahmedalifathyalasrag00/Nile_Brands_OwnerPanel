@@ -1,0 +1,61 @@
+<div *ngIf="loading || success" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <ng-container *ngIf="loading; else successTpl">
+        <div class="animate-spin" role="status">
+            <img src="images/nile brand.png" alt="Logo" class="w-40 h-40" />
+        </div>
+    </ng-container>
+
+    <ng-template #successTpl>
+        <div class="bg-green-100 border border-green-400 text-green-700 text-3xl sm:text-5xl font-bold
+                px-16 py-8 rounded-2xl shadow-lg animate-pulse">
+            Update Success!
+        </div>
+    </ng-template>
+</div>
+
+
+<div [class.opacity-50]="loading || success"
+    class="flex flex-col gap-4 max-w-[900px] my-[5%] sm:max-w-[800px] max-lg:max-w-[900px] sm:ml-28">
+    <div>
+        <h2 class="text-[25px] sm:text-[30px] font-[700] text-fontColor">Update Brand</h2>
+    </div>
+
+    <div class="p-6 bg-white shadow-md border rounded-lg border-fontColor">
+        <div class="mt-6">
+            <div class="flex flex-col gap-2">
+                <div class="w-[100px] h-[100px] rounded-full overflow-hidden bg-gray-100">
+                    <img *ngIf="previewUrl" [src]="previewUrl" class="w-full h-full object-cover" alt="" />
+                </div>
+                <p class="text-fontColor ml-8">Logo</p>
+                <input type="file" (change)="onFileChange($event)" accept="image/*" class="mt-2" />
+            </div>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="submit()" class="mt-6">
+            <div class="relative">
+                <label for="name"
+                    class="absolute left-4 -top-4 text-[16px] md:text-[20px] text-fontColor bg-white px-1">
+                    Name
+                </label>
+                <input formControlName="name" id="name" type="text" placeholder="Handmade Creations"
+                    class="block max-sm:w-full sm:w-[70%] px-4 pt-2 pb-2 mt-2 bg-white rounded-lg border border-fontColor placeholder:text-placeholder" />
+            </div>
+
+            <div class="relative mt-4">
+                <label for="description"
+                    class="absolute left-4 -top-4 text-[16px] md:text-[20px] text-fontColor bg-white px-1">
+                    Description
+                </label>
+                <input formControlName="description" id="description" type="text"
+                    placeholder="A brand showcasing unique handmade crafts from Egypt"
+                    class="block max-sm:w-full sm:w-[70%] px-4 pt-2 pb-2 mt-2 bg-white rounded-lg border border-fontColor placeholder:text-placeholder" />
+            </div>
+
+            <div class="mt-6 sm:text-right">
+                <button type="submit" class="px-12 py-2 text-[16px] text-white bg-primary rounded-[16px]">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
