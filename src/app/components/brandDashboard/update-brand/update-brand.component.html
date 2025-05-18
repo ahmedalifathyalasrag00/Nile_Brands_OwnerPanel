@@ -27,11 +27,16 @@
                     <img *ngIf="previewUrl" [src]="previewUrl" class="w-full h-full object-cover" alt="" />
                 </div>
                 <p class="text-fontColor ml-8">Logo</p>
-                <input type="file" (change)="onFileChange($event)" accept="image/*" class="mt-2" />
+                <div class="mt-4">
+                    <label class="cursor-pointer inline-block mt-2">
+                        <span class="px-4 py-2 bg-primary text-white rounded">Change Image</span>
+                        <input type="file" (change)="onFileChange($event)" accept="image/*" class="hidden" />
+                    </label>
+                </div>
             </div>
         </div>
 
-        <form [formGroup]="form" (ngSubmit)="submit()" class="mt-6">
+        <form [formGroup]="form" (ngSubmit)="submit()" class="mt-7">
             <div class="relative">
                 <label for="name"
                     class="absolute left-4 -top-4 text-[16px] md:text-[20px] text-fontColor bg-white px-1">

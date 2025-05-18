@@ -19,7 +19,8 @@
                     </form>
                 </div>
                 <div class="max-w-[50px] max-h-[50px]">
-                    <img src="images/ProfileImg.png" class="w-full h-full rounded-full" alt="Profile Image">
+                    <img [src]="avatarUrl" class="w-full h-full rounded-full object-cover" alt="Profile Image"
+                        (error)="avatarUrl='images/ProfileImg.png'" />
                 </div>
             </div>
             <div>
@@ -27,4 +28,4 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
