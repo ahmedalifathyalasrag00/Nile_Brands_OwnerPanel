@@ -12,10 +12,29 @@
             Please enter the code we just sent to your email
         </p>
 
-        <form class="mt-12" [formGroup]="form" (ngSubmit)="onVerify()">
+        <form [formGroup]="verifyForm" (ngSubmit)="verifyEmail()" class="mt-12">
             <div class="flex justify-center gap-2 mt-6">
-                <input *ngFor="let ctrl of controls; let i = index" #codeInput type="text" maxlength="1"
-                    [formControlName]="ctrl" (input)="autoFocus(i)"
+                <input type="text" maxlength="1" formControlName="code1" (input)="autoFocusNext($event, code2)"
+                    (keydown)="autoFocusPrev($event, null)" #code1
+                    class="w-[44px] h-[44px] text-[20px] text-center border-2 border-gray-300 rounded-md focus:border-primary focus:outline-none" />
+
+                <input type="text" maxlength="1" formControlName="code2" (input)="autoFocusNext($event, code3)"
+                    (keydown)="autoFocusPrev($event, code1)" #code2
+                    class="w-[44px] h-[44px] text-[20px] text-center border-2 border-gray-300 rounded-md focus:border-primary focus:outline-none" />
+
+                <input type="text" maxlength="1" formControlName="code3" (input)="autoFocusNext($event, code4)"
+                    (keydown)="autoFocusPrev($event, code2)" #code3
+                    class="w-[44px] h-[44px] text-[20px] text-center border-2 border-gray-300 rounded-md focus:border-primary focus:outline-none" />
+
+                <input type="text" maxlength="1" formControlName="code4" (input)="autoFocusNext($event, code5)"
+                    (keydown)="autoFocusPrev($event, code3)" #code4
+                    class="w-[44px] h-[44px] text-[20px] text-center border-2 border-gray-300 rounded-md focus:border-primary focus:outline-none" />
+
+                <input type="text" maxlength="1" formControlName="code5" (input)="autoFocusNext($event, code6)"
+                    (keydown)="autoFocusPrev($event, code4)" #code5
+                    class="w-[44px] h-[44px] text-[20px] text-center border-2 border-gray-300 rounded-md focus:border-primary focus:outline-none" />
+
+                <input type="text" maxlength="1" formControlName="code6" (keydown)="autoFocusPrev($event, code5)" #code6
                     class="w-[44px] h-[44px] text-[20px] text-center border-2 border-gray-300 rounded-md focus:border-primary focus:outline-none" />
             </div>
 
@@ -25,10 +44,16 @@
                 {{ errorMessage }}
             </div>
 
-            <button type="submit" [disabled]="form.invalid || timeLeft <= 0"
+            <button type="submit" [disabled]="verifyForm.invalid || timeLeft <= 0"
                 class="w-full mt-12 px-6 py-2 text-[16px] md:text-[20px] text-white bg-primary rounded-full disabled:opacity-50 disabled:cursor-not-allowed">
                 Verify
             </button>
+
+            <div class="text-center mt-4">
+                <button type="button" (click)="resendCode()" class="text-primary underline">
+                    Resend Code
+                </button>
+            </div>
         </form>
     </div>
 </div>
