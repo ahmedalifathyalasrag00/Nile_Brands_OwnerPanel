@@ -10,7 +10,7 @@
             <div class="relative">
                 <label for="email"
                     class="absolute left-4 top-[-15px] text-[16px] md:text-[20px] text-fontColor bg-white px-1">E-mail</label>
-                <input id="email" type="email" formControlName="email" placeholder="hello@gmail.com"
+                <input id="email" type="email" formControlName="email" placeholder=""
                     class="block w-full px-4 pt-2 pb-2 mt-2 bg-white rounded-lg placeholder:text-placeholder" />
                 <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
                     class="text-red-500 text-sm mt-1">
@@ -21,7 +21,7 @@
             <div class="relative mt-6">
                 <label for="password"
                     class="absolute left-4 top-[-15px] text-[16px] md:text-[20px] text-fontColor bg-white px-1">Password</label>
-                <input id="password" type="password" formControlName="password" placeholder="........."
+                <input id="password" type="password" formControlName="password" placeholder=""
                     class="block w-full px-4 pt-2 pb-2 mt-2 bg-white rounded-lg placeholder:text-placeholder" />
                 <span [routerLink]="['/forget-password']" routerLinkActive="router-link-active"
                     class="text-[#A61717] text-[14px] float-end mt-2 cursor-pointer">Forgot Password?</span>

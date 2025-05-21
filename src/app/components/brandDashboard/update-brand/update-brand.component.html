@@ -1,8 +1,5 @@
-<div *ngIf="loading || success" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+<div *ngIf="success" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
     <ng-container *ngIf="loading; else successTpl">
-        <div class="animate-spin" role="status">
-            <img src="images/nile brand.png" alt="Logo" class="w-40 h-40" />
-        </div>
     </ng-container>
 
     <ng-template #successTpl>
@@ -14,7 +11,7 @@
 </div>
 
 
-<div [class.opacity-50]="loading || success"
+<div [class.opacity-50]=" success"
     class="flex flex-col gap-4 max-w-[900px] my-[5%] sm:max-w-[800px] max-lg:max-w-[900px] sm:ml-28">
     <div>
         <h2 class="text-[25px] sm:text-[30px] font-[700] text-fontColor">Update Brand</h2>

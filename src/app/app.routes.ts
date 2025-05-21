@@ -11,6 +11,7 @@ import { HeroComponent } from './components/brandDashboard/hero/hero.component';
 import { UpdatebrandComponent } from './components/brandDashboard/update-brand/update-brand.component';
 import { DeleteBrandComponent } from './components/brandDashboard/delete-brand/delete-brand.component';
 import { ProfileComponent } from './components/brandDashboard/editprofile/editprofile.component';
+import { DashboardComponent } from './components/brandDashboard/dashboard/dashboard.component';
 
 export const routes: Routes = [
     { path: 'signin', component: LoginComponent },
@@ -28,6 +29,7 @@ export const routes: Routes = [
             { path: 'updatebrand', component: UpdatebrandComponent },
             { path: 'deletebrand', component: DeleteBrandComponent },
             { path: 'profile', component: ProfileComponent },
+            { path: 'analytics-dashboard', component: DashboardComponent },
             { path: '', redirectTo: 'hero', pathMatch: 'full' }
         ]
     },

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { UserService, User } from '../../../services/user/user.service';
 
@@ -10,15 +11,31 @@ import { UserService, User } from '../../../services/user/user.service';
   imports: [
     CommonModule,
     RouterModule,
-    SidebarComponent   
+    SidebarComponent
   ],
   templateUrl: './owner-dashboard.component.html',
   styleUrls: ['./owner-dashboard.component.css']
 })
 export class OwnerDashboardComponent implements OnInit {
   avatarUrl: string = '';
+  hideShell = false;
 
-  constructor(private userService: UserService) { }
+  // child routes under /dashboard where shell should be hidden
+  private hiddenChildPaths = [
+    '/dashboard/analytics-dashboard'
+  ];
+
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        const url = event.urlAfterRedirects.split('?')[0];
+        this.hideShell = this.hiddenChildPaths.includes(url);
+      });
+  }
 
   ngOnInit(): void {
     this.userService.getMe().subscribe({
@@ -26,8 +43,12 @@ export class OwnerDashboardComponent implements OnInit {
         this.avatarUrl = this.userService.getUserImageUrl(user.userImage);
       },
       error: () => {
-        this.avatarUrl = 'images/ProfileImg.png';
+        this.avatarUrl = 'assets/images/ProfileImg.png';
       }
     });
+
+    // initial hide check
+    const initialUrl = this.router.url.split('?')[0];
+    this.hideShell = this.hiddenChildPaths.includes(initialUrl);
   }
 }
