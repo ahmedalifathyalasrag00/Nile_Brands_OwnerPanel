@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class DashboardService {
-  private baseUrl = 'https://nile-brands-backend.up.railway.app/api/v1/analytics';
+  private baseUrl = 'https://nile-brands.up.railway.app/api/v1/analytics';
 
   constructor(
     private http: HttpClient,

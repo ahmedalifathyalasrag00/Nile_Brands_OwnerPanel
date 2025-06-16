@@ -5,5 +5,5 @@ import { Injectable } from '@angular/core';
 })
 export class GlobalService {
   constructor() { }
- apiUrl = 'https://nile-brands-backend.up.railway.app';
+ apiUrl = 'https://nile-brands.up.railway.app';
 }
