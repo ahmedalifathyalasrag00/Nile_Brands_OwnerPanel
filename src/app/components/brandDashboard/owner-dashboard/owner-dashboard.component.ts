@@ -23,6 +23,7 @@ export class OwnerDashboardComponent implements OnInit {
   // child routes under /dashboard where shell should be hidden
   private hiddenChildPaths = [
     '/dashboard/analytics-dashboard'
+    , '/dashboard/orders'
   ];
 
   constructor(

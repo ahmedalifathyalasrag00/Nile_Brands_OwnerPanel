@@ -12,6 +12,7 @@ import { UpdatebrandComponent } from './components/brandDashboard/update-brand/u
 import { DeleteBrandComponent } from './components/brandDashboard/delete-brand/delete-brand.component';
 import { ProfileComponent } from './components/brandDashboard/editprofile/editprofile.component';
 import { DashboardComponent } from './components/brandDashboard/dashboard/dashboard.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 export const routes: Routes = [
     { path: 'signin', component: LoginComponent },
@@ -30,6 +31,7 @@ export const routes: Routes = [
             { path: 'deletebrand', component: DeleteBrandComponent },
             { path: 'profile', component: ProfileComponent },
             { path: 'analytics-dashboard', component: DashboardComponent },
+            {path: 'orders', component: OrdersComponent },
             { path: '', redirectTo: 'hero', pathMatch: 'full' }
         ]
     },
